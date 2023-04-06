@@ -1,0 +1,52 @@
+:root {
+  --primary-dark: #333;
+
+  --primary-light: #fff1f2;
+  --red-100: #ffe4e6;
+  --red-200: #fecdd3;
+  --red-300: #fda4af;
+  --red-400: #fb7185;
+  --red-500: #f43f5e;
+  --red-600: #e11d48;
+  --red-700: #be123c;
+  --red-800: #9f1239;
+  --red-900: #881337;
+}
+
+#content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.task-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  position: absolute;
+}
+
+.task-container label {
+  flex: 1;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  vertical-align: middle;
+  border-bottom: 1px solid rgba(51, 51, 51, 0.2);
+  padding: 1rem 0;
+}
+
+.custom-checkbox {
+  cursor: pointer;
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1.5rem;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+}

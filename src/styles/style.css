@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap");
 @import url("./hamburger.css");
+@import url("./tasks.css");
 
 :root {
   font-size: 62.5%;
@@ -46,8 +47,19 @@ header {
   font-weight: 700;
   color: var(--primary-dark);
   background-color: var(--primary-light);
-  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.2); */
 }
+
+header > h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+main {
+  padding: 2rem 4rem;
+  color: var(--primary-dark);
+}d
 
 .add-btn {
   font-size: 3.5rem;
