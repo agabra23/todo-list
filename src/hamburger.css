@@ -1,0 +1,48 @@
+:root {
+  --primary-light: #efefef;
+  --primary-dark: #333;
+
+  --red-50: #fff1f2;
+  --red-100: #ffe4e6;
+  --red-200: #fecdd3;
+  --red-300: #fda4af;
+  --red-400: #fb7185;
+  --red-500: #f43f5e;
+  --red-600: #e11d48;
+  --red-700: #be123c;
+  --red-800: #9f1239;
+  --red-900: #881337;
+}
+
+.hamburger-menu {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 24px;
+  width: 30px;
+  padding: 0;
+  opacity: 1;
+}
+
+.bar {
+  background-color: var(--red-500);
+  height: 3px;
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+  border-radius: 2px;
+}
+
+.hamburger-menu.open .bar:first-child {
+  transform: translateY(11px) rotate(45deg);
+}
+
+.hamburger-menu.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.open .bar:last-child {
+  transform: translateY(-10px) rotate(-45deg);
+}

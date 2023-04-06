@@ -1,1 +1,1 @@
-console.log("poopy bum");
+(()=>{const e=document.getElementById("hamburgerMenu");e.onclick=()=>{e.classList.contains("open")?e.classList.remove("open"):e.classList.add("open")}})();
