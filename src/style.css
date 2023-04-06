@@ -6,10 +6,9 @@
   font-family: "Nunito", sans-serif;
   background-color: var(--primary-light);
 
-  --primary-light: #efefef;
   --primary-dark: #333;
 
-  --red-50: #fff1f2;
+  --primary-light: #fff1f2;
   --red-100: #ffe4e6;
   --red-200: #fecdd3;
   --red-300: #fda4af;
@@ -46,6 +45,8 @@ header {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--primary-dark);
+  background-color: var(--primary-light);
+  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.2);
 }
 
 .add-btn {
