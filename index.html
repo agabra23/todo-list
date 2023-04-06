@@ -5,12 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../src/style.css" />
-    <script src="./bundle.js"></script>
+    <script src="./bundle.js" defer></script>
     <title>To Do List</title>
   </head>
   <body>
     <header>
-      <button class="hamburger-menu" id="hamburgerMenu"></button>
+      <button class="hamburger-menu" id="hamburgerMenu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </button>
       <h1>All Tasks</h1>
     </header>
     <div class="add-btn" id="addBtn">+</div>
