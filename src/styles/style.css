@@ -59,7 +59,7 @@ header > h1 {
 main {
   padding: 2rem 4rem;
   color: var(--primary-dark);
-}d
+}
 
 .add-btn {
   font-size: 3.5rem;
@@ -76,6 +76,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+
   @media (max-width: 600px) {
     right: 4rem;
     bottom: 6rem;
