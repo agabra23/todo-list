@@ -25,6 +25,7 @@
   width: 30px;
   padding: 0;
   opacity: 1;
+  z-index: 99;
 }
 
 .bar {
@@ -37,12 +38,25 @@
 
 .hamburger-menu.open .bar:first-child {
   transform: translateY(11px) rotate(45deg);
+  background-color: var(--red-800);
 }
 
 .hamburger-menu.open .bar:nth-child(2) {
   opacity: 0;
+  background-color: var(--red-800);
 }
 
 .hamburger-menu.open .bar:last-child {
   transform: translateY(-10px) rotate(-45deg);
+  background-color: var(--red-800);
+}
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--red-200);
+  z-index: 98;
 }
