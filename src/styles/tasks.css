@@ -49,4 +49,11 @@ input[type="checkbox"] {
   margin-right: 1.5rem;
   border: 2px solid currentColor;
   border-radius: 50%;
+  transform: scale(1);
+  transition: all 200ms ease-in-out;
+}
+
+.task-container .custom-checkbox:hover {
+  transform: scale(1.2);
+  color: var(--red-500);
 }
