@@ -1,0 +1,23 @@
+:root {
+  font-size: 62.5%;
+  font-family: "Nunito", sans-serif;
+  background-color: var(--primary-light);
+
+  --primary-dark: #333;
+
+  --primary-light: #fff1f2;
+  --red-100: #ffe4e6;
+  --red-200: #fecdd3;
+  --red-300: #fda4af;
+  --red-400: #fb7185;
+  --red-500: #f43f5e;
+  --red-600: #e11d48;
+  --red-700: #be123c;
+  --red-800: #9f1239;
+  --red-900: #881337;
+}
+
+.desktop-nav {
+  background-color: var(--red-600);
+  width: 300px;
+}
