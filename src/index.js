@@ -2,13 +2,11 @@ import { List, Task } from "./todo.js";
 
 const list = new List();
 const hamburgerMenu = document.getElementById("hamburgerMenu");
+const mobileNav = document.getElementById("mobileNav");
 
 hamburgerMenu.onclick = () => {
-  if (hamburgerMenu.classList.contains("open")) {
-    hamburgerMenu.classList.remove("open");
-  } else {
-    hamburgerMenu.classList.add("open");
-  }
+  hamburgerMenu.classList.toggle("open");
+  mobileNav.classList.toggle("open");
 };
 
 const task1 = new Task(

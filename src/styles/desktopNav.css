@@ -18,6 +18,20 @@
 }
 
 .desktop-nav {
-  background-color: var(--red-600);
+  background-color: var(--red-500);
   width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
+}
+
+.list-container {
+  display: flex;
+  flex-direction: column;
 }
