@@ -9,34 +9,40 @@
     <title>To Do List</title>
   </head>
   <body>
-    <header>
-      <button class="hamburger-menu" id="hamburgerMenu">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-      </button>
-      <h1 id="listTitle">All Tasks</h1>
-    </header>
-    <main>
-      <div id="content">
-        <div class="task-container">
-          <input type="checkbox" id="testCheckbox" />
-          <label for="testCheckbox">
-            <span class="custom-checkbox"></span>
-            Task 1
-          </label>
+    <div class="desktop-nav" id="desktopNav">
+      <div class="list-container"></div>
+    </div>
+    <div id="mainWrapper">
+      <header>
+        <button class="hamburger-menu" id="hamburgerMenu">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </button>
+        <h1 id="listTitle">All Tasks</h1>
+      </header>
+      <main>
+        <div id="content">
+          <!-- Tasks -->
+          <div class="task-container">
+            <input type="checkbox" id="testCheckbox" />
+            <label for="testCheckbox">
+              <span class="custom-checkbox"></span>
+              Task 1
+            </label>
+          </div>
+          <div class="task-container">
+            <input type="checkbox" id="testCheckbox2" />
+            <label for="testCheckbox2">
+              <span class="custom-checkbox"></span>
+              Task 1
+            </label>
+          </div>
+          <!-- //Tasks -->
         </div>
-        <div class="task-container">
-          <input type="checkbox" id="testCheckbox2" />
-
-          <label for="testCheckbox2">
-            <span class="custom-checkbox"></span>
-            Task 1
-          </label>
-        </div>
-      </div>
-    </main>
+      </main>
+    </div>
     <div class="add-btn" id="addBtn">+</div>
-    <!-- <div class="mobile-nav"></div> -->
+    <div class="mobile-nav" id="mobileNav"></div>
   </body>
 </html>
