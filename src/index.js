@@ -1,4 +1,4 @@
-import "./style.css";
+import "./src/style.css";
 import { List, Task } from "./todo.js";
 import { displayController } from "./displayController.js";
 
