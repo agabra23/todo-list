@@ -22,27 +22,88 @@
         <h1 id="listTitle">All Tasks</h1>
       </header>
       <main>
-        <div id="content">
-          <!-- Tasks -->
-          <div class="task-container">
-            <input type="checkbox" id="testCheckbox" />
-            <label for="testCheckbox">
-              <span class="custom-checkbox"></span>
-              Task 1
-            </label>
-          </div>
-          <div class="task-container">
-            <input type="checkbox" id="testCheckbox2" />
-            <label for="testCheckbox2">
-              <span class="custom-checkbox"></span>
-              Task 1
-            </label>
-          </div>
-          <!-- //Tasks -->
-        </div>
+        <div id="content"></div>
       </main>
     </div>
     <div class="add-btn" id="addBtn">+</div>
     <div class="mobile-nav" id="mobileNav"></div>
+    <div class="add-modal open" id="addModal">
+      <form id="addForm" action="#">
+        <div class="submit-and-close-btns">
+          <button id="addSubmit" class="submit-btn" type="submit"></button>
+          <label for="addSubmit" class="submit-wrapper">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              id="submitSVG"
+              fill="currentColor"
+            >
+              <title>arrow-up</title>
+              <path
+                d="M13,20H11V8L5.5,13.5L4.08,12.08L12,4.16L19.92,12.08L18.5,13.5L13,8V20Z"
+              />
+            </svg>
+          </label>
+          <button
+            id="closeAddModal"
+            class="close-add-modal-btn"
+            type="reset"
+          ></button>
+          <label for="closeAddModal" class="close-wrapper">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              id="closeSVG"
+            >
+              <title>close</title>
+              <path
+                d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+              />
+            </svg>
+          </label>
+        </div>
+        <input type="text" id="taskName" placeholder="Task Name" required />
+        <input type="text" id="taskDescription" placeholder="Description" />
+        <div class="due-date-container">
+          <label for="dueDateMonth" class="label-margin">Due:</label>
+          <input
+            id="dueDateMonth"
+            type="number"
+            min="1"
+            max="12"
+            maxlength="2"
+            placeholder="00"
+            oninput="if(this.value.length > 2) this.value = this.value.slice(0,2);"
+          />
+          <span style="padding: 0.8rem"> / </span>
+          <input
+            id="dueDateDay"
+            type="number"
+            min="1"
+            max="31"
+            maxlength="2"
+            placeholder="00"
+            oninput="if(this.value.length > 2) this.value = this.value.slice(0,2);"
+          />
+          <span style="padding: 0.8rem"> / </span>
+          <input
+            id="dueDateYear"
+            type="number"
+            min="2023"
+            max="2100"
+            maxlength="4"
+            placeholder="0000"
+            oninput="if(this.value.length > 4) this.value = this.value.slice(0,4);"
+          />
+        </div>
+        <div class="priority-btn-container">
+          <!-- <label for="#" class="priority-label">Priority</label> -->
+          <button class="task-btn priority-btn">!</button>
+          <button class="task-btn priority-btn">!!</button>
+          <button class="task-btn priority-btn">!!!</button>
+        </div>
+      </form>
+    </div>
   </body>
 </html>

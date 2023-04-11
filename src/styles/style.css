@@ -2,6 +2,7 @@
 @import url("./hamburger.css");
 @import url("./tasks.css");
 @import url("./desktopNav.css");
+@import url("./add.css");
 
 :root {
   font-size: 62.5%;
