@@ -77,8 +77,8 @@ main {
   font-size: 3.5rem;
   text-align: center;
   position: fixed;
-  bottom: 5rem;
-  right: 8rem;
+  bottom: 5vh;
+  right: 4vw;
   cursor: pointer;
   background-color: var(--red-600);
   border-radius: 50%;
@@ -91,8 +91,8 @@ main {
   transition: all 200ms;
 
   @media (max-width: 600px) {
-    right: 3rem;
-    bottom: 4rem;
+    right: 6vw;
+    top: 2rem;
   }
 }
 
