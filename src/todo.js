@@ -25,6 +25,7 @@ class List {
   deleteTask(task) {
     let index = this.tasks.indexOf(task);
     if (index != -1) this.tasks.splice(index, 1);
+    console.log(this.tasks);
   }
 }
 
