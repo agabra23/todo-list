@@ -10,6 +10,9 @@ export const displayController = (() => {
       checkboxInput.setAttribute("type", "checkbox");
       const id = `task${index + 1}`;
       checkboxInput.setAttribute("id", id);
+
+      if (task.completed) checkboxInput.checked = true;
+
       const label = document.createElement("label");
       label.setAttribute("for", id);
       const customCheckbox = document.createElement("span");
