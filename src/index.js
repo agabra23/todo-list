@@ -48,7 +48,7 @@ const getFormTask = () => {
   const dueDay = document.getElementById("dueDateDay").value;
   const dueYear = document.getElementById("dueDateYear").value;
 
-  let priorityValue = "None";
+  let priorityValue = "";
   priorityBtns.forEach((btn) => {
     if (btn.classList.contains("active")) priorityValue = btn.textContent;
   });

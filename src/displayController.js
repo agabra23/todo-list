@@ -17,11 +17,16 @@ export const displayController = (() => {
       label.setAttribute("for", id);
       const customCheckbox = document.createElement("span");
       customCheckbox.classList.add("custom-checkbox");
-      label.innerHTML = `<span class="custom-checkbox"></span>${task.title}`;
+      label.innerHTML = `<span class="custom-checkbox"></span><span class="priority-marks">${task.priority}</span>${task.title}`;
+
+      const deleteBtn = document.createElement("button");
+      deleteBtn.classList.add("delete-btn");
+      deleteBtn.textContent = "Delete";
 
       taskWrapper.appendChild(taskContainer);
       taskContainer.appendChild(checkboxInput);
       taskContainer.appendChild(label);
+      taskContainer.appendChild(deleteBtn);
 
       if (task.completed) {
         customCheckbox.classList.add("completed");

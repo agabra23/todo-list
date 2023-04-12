@@ -59,7 +59,6 @@ header {
   font-weight: 700;
   color: var(--primary-dark);
   background-color: var(--primary-light);
-  /* box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.2); */
 }
 
 header > h1 {

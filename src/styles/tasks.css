@@ -24,6 +24,7 @@
   display: flex;
   align-items: center;
   width: 100%;
+  border-bottom: 1px solid rgba(51, 51, 51, 0.2);
 }
 
 input[type="checkbox"] {
@@ -37,7 +38,6 @@ input[type="checkbox"] {
   font-weight: 600;
   color: var(--primary-dark);
   vertical-align: middle;
-  border-bottom: 1px solid rgba(51, 51, 51, 0.2);
   padding: 1rem 0;
   cursor: pointer;
   display: flex;
@@ -71,4 +71,12 @@ input[type="checkbox"]:checked + label > .custom-checkbox {
 
 input[type="checkbox"]:checked + label {
   opacity: 50%;
+}
+
+.priority-marks {
+  margin-right: 1rem;
+  font-size: inherit;
+  font-weight: 800;
+  color: var(--red-600);
+  letter-spacing: 3px;
 }
