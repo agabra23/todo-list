@@ -2,7 +2,8 @@ import "./styles/style.css";
 import { List, Task } from "./todo.js";
 import { displayController } from "./displayController.js";
 
-const todoList = new List();
+const todoList = new List("Todo");
+let listArr = [todoList, todoList, todoList];
 
 // Sidebar Nav Logic
 
@@ -95,4 +96,4 @@ addSubmitBtn.onclick = (e) => {
   createTask();
 };
 
-// createTask();
+displayController.render(listArr, todoList);
