@@ -13,12 +13,22 @@ export const displayController = (() => {
 
       if (task.completed) checkboxInput.checked = true;
 
-      const label = document.createElement("label");
-      label.setAttribute("for", id);
+      const contents = document.createElement("div");
+      contents.classList.add("task-contents");
       const customCheckbox = document.createElement("span");
       customCheckbox.classList.add("custom-checkbox");
-      label.innerHTML = `<span class="custom-checkbox"></span><span class="priority-marks">${task.priority}</span>${task.title}`;
-      label.classList.add("main-task-label");
+      contents.innerHTML = `<label for="${id}"><span class="custom-checkbox"></span></label><span class="priority-marks">${task.priority}</span><span class="editable-title" contenteditable=true> ${task.title}</span>`;
+
+      // const editableTitle = document.querySelector(".editable-title");
+      // editableTitle.addEventListener("keydown", (event) => {
+      //   if (event.keyCode === 13) {
+      //     event.preventDefault();
+      //     title.blur();
+      //   }
+      // });
+      // editableTitle.addEventListener("blur", () => {
+      //   task.title = editableTitle.textContent;
+      // });
 
       const btnsDiv = document.createElement("div");
       btnsDiv.classList.add("btns-div");
@@ -38,7 +48,7 @@ export const displayController = (() => {
       deleteBtn.style.display = "none";
 
       taskContainer.appendChild(checkboxInput);
-      taskContainer.appendChild(label);
+      taskContainer.appendChild(contents);
       btnsDiv.appendChild(deleteBtn);
       btnsDiv.appendChild(deleteLabel);
       taskContainer.appendChild(btnsDiv);
@@ -51,6 +61,10 @@ export const displayController = (() => {
       deleteLabel.addEventListener("click", (e) => {
         console.log("label click");
         deleteBtn.click();
+      });
+
+      customCheckbox.addEventListener("click", () => {
+        checkboxInput.checked = !checkboxInput.checked;
       });
 
       checkboxInput.addEventListener("click", (e) => {
