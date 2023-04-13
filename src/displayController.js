@@ -18,22 +18,40 @@ export const displayController = (() => {
       const customCheckbox = document.createElement("span");
       customCheckbox.classList.add("custom-checkbox");
       label.innerHTML = `<span class="custom-checkbox"></span><span class="priority-marks">${task.priority}</span>${task.title}`;
+      label.classList.add("main-task-label");
+
+      const btnsDiv = document.createElement("div");
+      btnsDiv.classList.add("btns-div");
 
       const deleteBtn = document.createElement("button");
       deleteBtn.classList.add("delete-btn");
-      deleteBtn.textContent = "Delete";
+      deleteBtn.textContent = "";
       deleteBtn.dataset.index = i;
       deleteBtn.setAttribute.id = `deleteBtn${deleteBtn.dataset.index}`;
       console.log(deleteBtn.dataset.index);
 
-      taskWrapper.appendChild(taskContainer);
+      const deleteLabel = document.createElement("label");
+      deleteLabel.setAttribute("for", deleteBtn.id);
+      deleteLabel.classList.add("delete-label");
+      deleteLabel.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" style="width: 25px" viewBox="0 0 24 24"><title>trash-can-outline</title><path fill="currentColor" d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" /></svg>`;
+
+      deleteBtn.style.display = "none";
+
       taskContainer.appendChild(checkboxInput);
       taskContainer.appendChild(label);
-      taskContainer.appendChild(deleteBtn);
+      btnsDiv.appendChild(deleteBtn);
+      btnsDiv.appendChild(deleteLabel);
+      taskContainer.appendChild(btnsDiv);
+      taskWrapper.appendChild(taskContainer);
 
       if (task.completed) {
         customCheckbox.classList.add("completed");
       }
+
+      deleteLabel.addEventListener("click", (e) => {
+        console.log("label click");
+        deleteBtn.click();
+      });
 
       checkboxInput.addEventListener("click", (e) => {
         task.toggleCompleted();

@@ -36,7 +36,7 @@ html {
 }
 
 body {
-  height: 100svh;
+  min-height: 100svh;
 
   @media (min-width: 601px) {
     display: flex;
@@ -74,10 +74,10 @@ main {
 
 .add-btn {
   font-size: 3.5rem;
+
   text-align: center;
   position: fixed;
-  bottom: 5vh;
-  right: 4vw;
+
   cursor: pointer;
   background-color: var(--red-600);
   border-radius: 50%;
@@ -85,12 +85,16 @@ main {
   width: 5rem;
   height: 5rem;
   display: flex;
+
   justify-content: center;
   align-items: center;
   transition: all 200ms;
 
+  bottom: 3rem;
+  right: 3rem;
+
   @media (max-width: 600px) {
-    right: 6vw;
+    right: 2rem;
     top: 2rem;
   }
 }

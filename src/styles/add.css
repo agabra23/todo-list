@@ -24,7 +24,7 @@
   /* background: linear-gradient(60deg, var(--red-100), var(--red-200)); */
   background-color: #efefef;
   z-index: 98;
-  transition: 0.4s;
+  transition: all 200ms ease-in-out;
   padding: 2rem;
   box-shadow: 0 0 5px 8px rgba(0, 0, 0, 0.2);
   border-radius: 2rem;
@@ -86,7 +86,7 @@ input::placeholder {
   padding: 0.5rem;
   border-radius: 50%;
   cursor: pointer;
-  transition: all 0.4s;
+  transition: all 200ms ease-in-out;
 }
 
 @media (min-width: 601px) {
@@ -151,7 +151,7 @@ input::placeholder {
   color: var(--red-500);
   border-color: var(--red-500);
   cursor: pointer;
-  transition: all 0.4s;
+  transition: all 200ms ease-in-out;
 }
 
 .priority-btn.active {
