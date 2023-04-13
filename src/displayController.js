@@ -17,18 +17,7 @@ export const displayController = (() => {
       contents.classList.add("task-contents");
       const customCheckbox = document.createElement("span");
       customCheckbox.classList.add("custom-checkbox");
-      contents.innerHTML = `<label for="${id}"><span class="custom-checkbox"></span></label><span class="priority-marks" id="priority${i}">${task.priority}</span><span class="editable-title" contenteditable=true>${task.title}</span>`;
-
-      // const editableTitle = document.querySelector(".editable-title");
-      // editableTitle.addEventListener("keydown", (event) => {
-      //   if (event.keyCode === 13) {
-      //     event.preventDefault();
-      //     title.blur();
-      //   }
-      // });
-      // editableTitle.addEventListener("blur", () => {
-      //   task.title = editableTitle.textContent;
-      // });
+      contents.innerHTML = `<label for="${id}"><span class="custom-checkbox"></span></label><span class="priority-marks" id="priority${i}">${task.priority}</span><span class="editable-title"  id="title${i}" contenteditable=true>${task.title}</span>`;
 
       const btnsDiv = document.createElement("div");
       btnsDiv.classList.add("btns-div");
@@ -53,6 +42,18 @@ export const displayController = (() => {
       btnsDiv.appendChild(deleteLabel);
       taskContainer.appendChild(btnsDiv);
       taskWrapper.appendChild(taskContainer);
+
+      const editableTitle = document.getElementById(`title${i}`);
+      editableTitle.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          console.log("Enter");
+          event.preventDefault();
+          editableTitle.blur();
+        }
+      });
+      editableTitle.addEventListener("blur", () => {
+        task.title = editableTitle.textContent;
+      });
 
       const prioritySpan = document.getElementById(`priority${i}`);
       if (prioritySpan.textContent === "") {

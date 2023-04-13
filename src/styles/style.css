@@ -33,10 +33,12 @@
 
 html {
   min-height: 100svh;
+  width: 100vw;
 }
 
 body {
   min-height: 100svh;
+  width: 100vw;
 
   @media (min-width: 601px) {
     display: flex;
