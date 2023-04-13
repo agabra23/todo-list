@@ -81,8 +81,10 @@ function resetForm() {
 
 function createTask() {
   let task = getFormTask();
-  todoList.addTask(task);
-  console.log(todoList.tasks);
+  if (task.title != "") {
+    todoList.addTask(task);
+    console.log(todoList.tasks);
+  }
   closeAddModal();
   displayController.render(todoList);
 }
