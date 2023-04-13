@@ -17,7 +17,7 @@ export const displayController = (() => {
       contents.classList.add("task-contents");
       const customCheckbox = document.createElement("span");
       customCheckbox.classList.add("custom-checkbox");
-      contents.innerHTML = `<label for="${id}"><span class="custom-checkbox"></span></label><span class="priority-marks">${task.priority}</span><span class="editable-title" contenteditable=true> ${task.title}</span>`;
+      contents.innerHTML = `<label for="${id}"><span class="custom-checkbox"></span></label><span class="priority-marks" id="priority${i}">${task.priority}</span><span class="editable-title" contenteditable=true>${task.title}</span>`;
 
       // const editableTitle = document.querySelector(".editable-title");
       // editableTitle.addEventListener("keydown", (event) => {
@@ -53,6 +53,11 @@ export const displayController = (() => {
       btnsDiv.appendChild(deleteLabel);
       taskContainer.appendChild(btnsDiv);
       taskWrapper.appendChild(taskContainer);
+
+      const prioritySpan = document.getElementById(`priority${i}`);
+      if (prioritySpan.textContent === "") {
+        prioritySpan.classList.add("priority-no-margin");
+      }
 
       if (task.completed) {
         customCheckbox.classList.add("completed");
