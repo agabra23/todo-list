@@ -96,4 +96,4 @@ addSubmitBtn.onclick = (e) => {
   createTask();
 };
 
-displayController.render(listArr, todoList);
+displayController.render(todoList);

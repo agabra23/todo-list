@@ -1,5 +1,5 @@
 export const displayController = (() => {
-  const render = (listArr, todoList) => {
+  const render = (todoList) => {
     console.log("working");
     const taskWrapper = document.getElementById("content");
     taskWrapper.innerHTML = "";
