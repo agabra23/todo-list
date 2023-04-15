@@ -81,8 +81,7 @@ export const displayController = (() => {
       });
 
       deleteBtn.addEventListener("click", (e) => {
-        console.log(`This is the parentList: ${task.parentList}`);
-        // task.parentList.deleteTask(task);
+        todoList.deleteTask(task);
         listArr[0].deleteTask(task);
         e.stopPropagation();
         displayController.render.bind(this)(listArr, todoList);

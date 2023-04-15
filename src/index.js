@@ -53,8 +53,6 @@ const getFormTask = () => {
   const dueMonth = document.getElementById("dueDateMonth").value;
   const dueDay = document.getElementById("dueDateDay").value;
   const dueYear = document.getElementById("dueDateYear").value;
-  const activeList = listArr.find((item) => item.active == true);
-  console.log(`Active list in getFormTask() is: ${activeList}`);
 
   let priorityValue = "";
   priorityBtns.forEach((btn) => {
@@ -66,8 +64,7 @@ const getFormTask = () => {
     taskDescription,
     `${dueMonth}/${dueDay}/${dueYear}`,
     priorityValue,
-    false,
-    activeList
+    false
   );
 };
 
