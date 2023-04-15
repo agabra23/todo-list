@@ -3,7 +3,9 @@ import { List, Task } from "./todo.js";
 import { displayController } from "./displayController.js";
 
 const todoList = new List("Todo");
-let listArr = [todoList, todoList, todoList];
+const todoList2 = new List("Groceries");
+const todoList3 = new List("Shopping");
+let listArr = [todoList, todoList2, todoList3];
 
 // Sidebar Nav Logic
 
@@ -80,20 +82,23 @@ function resetForm() {
   });
 }
 
-function createTask() {
+function createTask(list) {
   let task = getFormTask();
   if (task.title != "") {
-    todoList.addTask(task);
-    console.log(todoList.tasks);
+    list.addTask(task);
+    console.log(list.tasks);
   }
   closeAddModal();
-  displayController.render(todoList);
+  displayController.render(listArr, list);
 }
 
 const addSubmitBtn = document.getElementById("addSubmit");
 addSubmitBtn.onclick = (e) => {
+  const selectedListItem = document.querySelector(".list-item.active");
   e.preventDefault();
-  createTask();
+  createTask(listArr[selectedListItem.dataset.index]);
 };
 
-displayController.render(todoList);
+window.onload = () => {
+  displayController.render(listArr, todoList);
+};

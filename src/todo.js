@@ -14,9 +14,10 @@ class Task {
 }
 
 class List {
-  constructor(title = "") {
+  constructor(title = "", active = false) {
     this.tasks = [];
     this.title = title;
+    this.active = this.active;
   }
 
   addTask(newTask) {

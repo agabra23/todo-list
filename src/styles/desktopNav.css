@@ -50,6 +50,10 @@
   color: var(--primary-light);
   cursor: pointer;
   transition: all 200ms ease-in-out;
+
+  @media (max-width: 600px) {
+    background-color: var(--red-600);
+  }
 }
 
 @media (min-width: 601px) {
