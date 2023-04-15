@@ -81,7 +81,7 @@ export const displayController = (() => {
       });
 
       deleteBtn.addEventListener("click", (e) => {
-        todoList.deleteTask(task);
+        task.parentList.deleteTask(task);
         listArr[0].deleteTask(task);
         e.stopPropagation();
         displayController.render.bind(this)(listArr, todoList);

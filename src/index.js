@@ -89,6 +89,7 @@ function createTask(list) {
   let task = getFormTask();
   if (task.title != "") {
     list.addTask(task);
+    task.parentList = list;
     allTasksList.addTask(task);
     console.log(list.tasks);
   }

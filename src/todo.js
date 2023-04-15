@@ -1,10 +1,17 @@
 class Task {
-  constructor(title = "", description = "", dueDate = "", priority = "") {
+  constructor(
+    title = "",
+    description = "",
+    dueDate = "",
+    priority = "",
+    parentList = undefined
+  ) {
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
     this.priority = priority;
     this.completed = false;
+    this.parentList = parentList;
   }
 
   toggleCompleted() {
