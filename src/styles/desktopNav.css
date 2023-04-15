@@ -45,6 +45,7 @@
   border-radius: 1rem;
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
   align-items: center;
   font-size: 2rem;
   color: var(--primary-light);
@@ -54,6 +55,14 @@
   @media (max-width: 600px) {
     background-color: var(--red-600);
   }
+}
+
+.list-item-title {
+  flex: 1;
+}
+
+.list-item-title:focus {
+  outline: none;
 }
 
 @media (min-width: 601px) {
@@ -71,7 +80,8 @@
   border-color: var(--red-700);
 }
 
-.nav-gear-div {
+.nav-pencil-div,
+.nav-trash-div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,7 +91,8 @@
 }
 
 @media (min-width: 601px) {
-  .nav-gear-div.hover-effect {
-    transform: scale(1.1);
+  .nav-pencil-div:hover,
+  .nav-trash-div:hover {
+    transform: scale(1.2);
   }
 }
