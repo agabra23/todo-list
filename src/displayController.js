@@ -166,13 +166,17 @@ export const displayController = (() => {
           });
         });
       });
+    });
 
-      const trashCans = document.querySelectorAll(".nav-trash-div");
-      trashCans.forEach((trashCan) => {
-        trashCan.addEventListener("click", (e) => {
-          console.log(`Delete this list`);
-          e.stopPropagation();
-        });
+    const trashCans = document.querySelectorAll(".nav-trash-div");
+    trashCans.forEach((trashCan) => {
+      console.log("Attaching event listener to trash can:", trashCan);
+      trashCan.addEventListener("click", (e) => {
+        let i = trashCan.parentElement.dataset.index;
+
+        listArr.splice(i, 1);
+        displayController.render.bind(this)(listArr, todoList);
+        e.stopPropagation();
       });
     });
 

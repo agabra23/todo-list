@@ -68,6 +68,15 @@ const getFormTask = () => {
   );
 };
 
+function deleteList(list) {
+  let index = listArr.indexOf(list);
+  if (index != -1) listArr.splice(index, 1);
+}
+
+function addList(list) {
+  listArr.push(list);
+}
+
 function closeAddModal() {
   addBtn.classList.toggle("open");
   addModal.classList.toggle("open");

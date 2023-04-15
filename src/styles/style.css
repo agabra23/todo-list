@@ -96,8 +96,8 @@ main {
   right: 3rem;
 
   @media (max-width: 600px) {
-    right: 2rem;
-    top: 2rem;
+    right: 3rem;
+    bottom: 5rem;
   }
 }
 
