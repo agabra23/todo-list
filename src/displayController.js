@@ -128,6 +128,14 @@ export const displayController = (() => {
 
         listTitle.textContent = list.title;
       });
+
+      const gears = document.querySelectorAll(".nav-gear-div");
+      gears.forEach((gear) => {
+        gear.addEventListener("click", (e) => {
+          e.stopPropagation();
+          console.log(`Clicked this gear: ${gear}`);
+        });
+      });
     });
 
     const listItems = document.querySelectorAll(".list-item");

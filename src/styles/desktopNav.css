@@ -75,4 +75,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 200ms ease-in-out;
+  position: relative;
+  z-index: 95;
+}
+
+@media (min-width: 601px) {
+  .nav-gear-div.hover-effect {
+    transform: scale(1.1);
+  }
 }
