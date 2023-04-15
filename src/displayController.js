@@ -173,8 +173,18 @@ export const displayController = (() => {
       console.log("Attaching event listener to trash can:", trashCan);
       trashCan.addEventListener("click", (e) => {
         let i = trashCan.parentElement.dataset.index;
-
+        listArr[i].tasks.forEach((task) => {
+          listArr[i].deleteTask(task);
+          listArr[0].deleteTask(task);
+        });
         listArr.splice(i, 1);
+        trashCans[0].parentElement.classList.add("active");
+        listArr.forEach((list) => {
+          list.active = false;
+        });
+        listArr[0].active = true;
+        const headerTitle = document.getElementById("listTitle");
+        headerTitle.textContent = "All Tasks";
         displayController.render.bind(this)(listArr, todoList);
         e.stopPropagation();
       });
