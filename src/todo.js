@@ -1,10 +1,17 @@
 class Task {
-  constructor(title = "", description = "", dueDate = "", priority = "") {
+  constructor(
+    title = "",
+    description = "",
+    dueDate = "",
+    priority = "",
+    parentList
+  ) {
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
     this.priority = priority;
     this.completed = false;
+    this.parentList = parentList;
   }
 
   toggleCompleted() {
@@ -17,7 +24,7 @@ class List {
   constructor(title = "", active = false) {
     this.tasks = [];
     this.title = title;
-    this.active = this.active;
+    this.active = active;
   }
 
   addTask(newTask) {

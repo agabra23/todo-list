@@ -5,7 +5,10 @@ import { displayController } from "./displayController.js";
 const todoList = new List("Todo");
 const todoList2 = new List("Groceries");
 const todoList3 = new List("Shopping");
-let listArr = [todoList, todoList2, todoList3];
+const allTasksList = new List("All Tasks", true);
+let listArr = [allTasksList, todoList, todoList2, todoList3];
+
+displayController.render(listArr, allTasksList);
 
 // Sidebar Nav Logic
 
@@ -50,6 +53,8 @@ const getFormTask = () => {
   const dueMonth = document.getElementById("dueDateMonth").value;
   const dueDay = document.getElementById("dueDateDay").value;
   const dueYear = document.getElementById("dueDateYear").value;
+  const activeList = listArr.find((item) => item.active == true);
+  console.log(`Active list in getFormTask() is: ${activeList}`);
 
   let priorityValue = "";
   priorityBtns.forEach((btn) => {
@@ -61,7 +66,8 @@ const getFormTask = () => {
     taskDescription,
     `${dueMonth}/${dueDay}/${dueYear}`,
     priorityValue,
-    false
+    false,
+    activeList
   );
 };
 
@@ -86,6 +92,7 @@ function createTask(list) {
   let task = getFormTask();
   if (task.title != "") {
     list.addTask(task);
+    allTasksList.addTask(task);
     console.log(list.tasks);
   }
   closeAddModal();
@@ -96,9 +103,10 @@ const addSubmitBtn = document.getElementById("addSubmit");
 addSubmitBtn.onclick = (e) => {
   const selectedListItem = document.querySelector(".list-item.active");
   e.preventDefault();
-  createTask(listArr[selectedListItem.dataset.index]);
-};
 
-window.onload = () => {
-  displayController.render(listArr, todoList);
+  if (selectedListItem === null) {
+    createTask(allTasksList);
+  } else {
+    createTask(listArr[selectedListItem.dataset.index]);
+  }
 };
