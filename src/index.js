@@ -6,7 +6,21 @@ const todoList = new List("Todo");
 const todoList2 = new List("Groceries");
 const todoList3 = new List("Shopping");
 const allTasksList = new List("All Tasks", true);
-let listArr = [allTasksList, todoList, todoList2, todoList3];
+let listArr = [
+  allTasksList,
+  todoList,
+  todoList2,
+  todoList3,
+  todoList,
+  todoList,
+  todoList,
+  todoList,
+  todoList,
+  todoList,
+  todoList,
+  todoList,
+  todoList,
+];
 
 displayController.render(listArr, allTasksList);
 

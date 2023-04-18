@@ -20,11 +20,13 @@
 .desktop-nav {
   background-color: var(--red-500);
   width: 300px;
+  max-height: 100svh;
   display: flex;
   justify-content: center;
   align-items: center;
   border-top-right-radius: 2rem;
   border-bottom-right-radius: 2rem;
+  /* padding: 3rem 0; */
 
   @media (max-width: 600px) {
     display: none;
@@ -32,14 +34,26 @@
 }
 
 .list-container {
+  height: 100%;
+  max-height: 100svh;
   width: 100%;
-  padding: 3rem;
+  max-height: 100%;
+  position: relative;
+  margin: 3rem;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   gap: 1.5rem;
+  overflow-y: scroll;
+  overflow-x: visible;
+
+  @media (max-width: 600px) {
+    margin-top: 10rem;
+  }
 }
 
-.list-item {
+.list-item,
+.add-list-container {
   padding: 1rem;
   border: 2px solid var(--primary-light);
   border-radius: 1rem;
@@ -51,6 +65,7 @@
   color: var(--primary-light);
   cursor: pointer;
   transition: all 200ms ease-in-out;
+  position: relative;
 
   @media (max-width: 600px) {
     background-color: var(--red-600);
@@ -67,7 +82,7 @@
 
 @media (min-width: 601px) {
   .list-item:hover {
-    transform: scale(1.05);
+    transform: translateX(5px);
     background-color: var(--primary-light);
     color: var(--red-500);
     border-color: var(--red-700);
@@ -80,8 +95,24 @@
   border-color: var(--red-700);
 }
 
+@media (min-width: 601px) {
+  .add-list-container:hover {
+    background-color: var(--red-500);
+    color: var(--primary-light);
+    border-color: var(--primary-light);
+    box-shadow: 0 0 10px 4px #efefef5a;
+    transform: scale(1);
+    transform: translateX(5px);
+  }
+}
+
+.add-list-container {
+  margin-bottom: 6rem;
+}
+
 .nav-pencil-div,
-.nav-trash-div {
+.nav-trash-div,
+.plus-sign-div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,4 +126,69 @@
   .nav-trash-div:hover {
     transform: scale(1.2);
   }
+}
+
+#addListModal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 300px;
+  height: 150px;
+
+  z-index: 250;
+  display: grid;
+  gap: 2rem;
+  place-items: center;
+  grid-template-columns: 1fr 1fr;
+
+  padding: 3rem;
+  background-color: var(--red-500);
+  border-radius: 2rem;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+
+  transition: all 200ms ease-in-out;
+  transform: translate(50%, -50%) scale(0);
+  color: var(--primary-light);
+}
+
+.add-list-modal.active {
+  transform: scale(1);
+}
+
+.add-list-label {
+  grid-column: 1 / 3;
+  place-self: start;
+}
+
+#addListInput {
+  grid-column: 1 / 3;
+  font-size: 2rem;
+  color: var(--primary-light);
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#addListInput::placeholder {
+  color: rgb(239, 239, 239, 0.5);
+}
+
+.list-add-btn,
+.list-cancel-btn {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  background-color: transparent;
+  border-radius: 1rem;
+  border: 1px solid var(--primary-light);
+  color: var(--primary-light);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+
+.list-add-btn:hover,
+.list-cancel-btn:hover {
+  transform: scale(1.01);
+  transform: translateY(-3px);
 }

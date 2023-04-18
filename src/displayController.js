@@ -106,6 +106,23 @@ export const displayController = (() => {
 
       listTitle.textContent = "All Tasks";
 
+      const addWrapper = document.createElement("div");
+      addWrapper.dataset.index = 0;
+      const addTitle = document.createElement("h4");
+      addWrapper.classList.add("add-list-container");
+      addWrapper.dataset.index = 0;
+      addTitle.classList.add("list-item-title");
+      addTitle.setAttribute.id = `listItemTitle0`;
+      const plusSignDiv = document.createElement("div");
+      plusSignDiv.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="width: 25px" viewBox="0 0 24 24"><title>plus</title><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg>`;
+      plusSignDiv.classList.add("plus-sign-div");
+
+      addWrapper.appendChild(addTitle);
+      addWrapper.appendChild(plusSignDiv);
+      container.appendChild(addWrapper);
+
+      addTitle.textContent = "Add List";
+
       listArr.slice(1).forEach((list, i) => {
         const listWrapper = document.createElement("div");
         listWrapper.dataset.index = i + 1;
@@ -217,7 +234,12 @@ export const displayController = (() => {
           headerTitle.textContent = listItemTitle.textContent;
       });
     });
-    console.log(document.querySelector(".list-item.active"));
+
+    const addListBtn = document.querySelector(".add-list-container");
+    addListBtn.addEventListener("click", () => {
+      const addListModal = document.getElementById("addListModal");
+      addListModal.classList.toggle("active");
+    });
   };
 
   return {
