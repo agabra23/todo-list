@@ -235,10 +235,12 @@ export const displayController = (() => {
       });
     });
 
-    const addListBtn = document.querySelector(".add-list-container");
-    addListBtn.addEventListener("click", () => {
-      const addListModal = document.getElementById("addListModal");
-      addListModal.classList.toggle("active");
+    const addListBtns = document.querySelectorAll(".add-list-container");
+    addListBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const addListModal = document.getElementById("addListModal");
+        addListModal.classList.toggle("active");
+      });
     });
   };
 

@@ -44,9 +44,6 @@ body {
   display: flex;
   padding: 2rem 2rem 2rem 0;
   gap: 1rem;
-  @media (min-width: 601px) {
-    
-  }
 }
 
 #mainWrapper {
