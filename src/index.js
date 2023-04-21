@@ -82,10 +82,10 @@ const getFormTask = () => {
   );
 };
 
-function deleteList(list) {
-  let index = listArr.indexOf(list);
-  if (index != -1) listArr.splice(index, 1);
-}
+// function deleteList(list) {
+//   let index = listArr.indexOf(list);
+//   if (index != -1) listArr.splice(index, 1);
+// }
 
 function addList(list) {
   listArr.push(list);
@@ -130,4 +130,27 @@ addSubmitBtn.onclick = (e) => {
   } else {
     createTask(listArr[selectedListItem.dataset.index]);
   }
+};
+
+const modalSubmitBtn = document.querySelector(".list-add-btn");
+modalSubmitBtn.onclick = (e) => {
+  e.preventDefault();
+
+  const addListModal = document.getElementById("addListModal");
+  const addListInput = document.getElementById("addListInput");
+  const addListForm = document.getElementById("addListForm");
+
+  let tempTitle = addListInput.value;
+  console.log(addListInput);
+  console.log(`title: ${tempTitle}`);
+  listArr.forEach((list) => {
+    if (list != listArr[0]) {
+      list.active = false;
+    }
+  });
+  const newList = new List(tempTitle, false);
+  addList(newList);
+  addListModal.classList.toggle("active");
+  displayController.render(listArr, newList);
+  addListForm.reset();
 };

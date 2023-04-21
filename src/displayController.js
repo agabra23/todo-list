@@ -187,7 +187,6 @@ export const displayController = (() => {
 
     const trashCans = document.querySelectorAll(".nav-trash-div");
     trashCans.forEach((trashCan) => {
-      console.log("Attaching event listener to trash can:", trashCan);
       trashCan.addEventListener("click", (e) => {
         let i = trashCan.parentElement.dataset.index;
         listArr[i].tasks.forEach((task) => {
@@ -227,8 +226,6 @@ export const displayController = (() => {
         const headerTitle = document.getElementById("listTitle");
         const listItemContainer = document.querySelector(".list-item.active");
         const listItemTitle = listItemContainer.children[0];
-        console.log(headerTitle.textContent);
-        console.log(listItemTitle);
 
         if (listItemTitle != null)
           headerTitle.textContent = listItemTitle.textContent;
@@ -241,6 +238,14 @@ export const displayController = (() => {
         const addListModal = document.getElementById("addListModal");
         addListModal.classList.toggle("active");
       });
+    });
+
+    const addListCancelBtn = document.querySelector(".list-cancel-btn");
+    addListCancelBtn.addEventListener("click", () => {
+      const addListForm = document.getElementById("addListForm");
+      const addListModal = document.getElementById("addListModal");
+      addListForm.reset();
+      addListModal.classList.toggle("active");
     });
   };
 

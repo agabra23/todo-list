@@ -155,10 +155,6 @@
   height: 150px;
 
   z-index: 250;
-  display: grid;
-  gap: 2rem;
-  place-items: center;
-  grid-template-columns: 1fr 1fr;
 
   padding: 3rem;
   background-color: var(--red-500);
@@ -168,6 +164,16 @@
   transition: all 200ms ease-in-out;
 
   color: var(--primary-light);
+}
+
+#addListModal > form {
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  gap: 2rem;
+  place-items: center;
+  grid-template-columns: 1fr 1fr;
 }
 
 #addListModal.active {
