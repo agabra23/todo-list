@@ -5,21 +5,21 @@ import { displayController } from "./displayController.js";
 const todoList = new List("Todo");
 const todoList2 = new List("Groceries");
 const todoList3 = new List("Shopping");
+const todoList4 = new List("Unsure");
 const allTasksList = new List("All Tasks", true);
 let listArr = [
   allTasksList,
   todoList,
   todoList2,
   todoList3,
-  todoList,
-  todoList,
-  todoList,
-  todoList,
-  todoList,
-  todoList,
-  todoList,
-  todoList,
-  todoList,
+  todoList4,
+  todoList4,
+  todoList4,
+  todoList4,
+  todoList4,
+  todoList4,
+  todoList4,
+  todoList4,
 ];
 
 displayController.render(listArr, allTasksList);
@@ -82,11 +82,6 @@ const getFormTask = () => {
   );
 };
 
-// function deleteList(list) {
-//   let index = listArr.indexOf(list);
-//   if (index != -1) listArr.splice(index, 1);
-// }
-
 function addList(list) {
   listArr.push(list);
 }
@@ -113,7 +108,9 @@ function createTask(list) {
   if (task.title != "") {
     list.addTask(task);
     task.parentList = list;
-    allTasksList.addTask(task);
+    if (list !== allTasksList) {
+      allTasksList.addTask(task);
+    }
     console.log(list.tasks);
   }
   closeAddModal();
