@@ -92,6 +92,7 @@
 
 .list-item-title {
   flex: 1;
+  word-break: break-all;
 }
 
 .list-item-title:focus {
@@ -150,7 +151,7 @@
   position: fixed;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%) scale(0);
+
   width: 300px;
   height: 150px;
 
@@ -162,7 +163,7 @@
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
 
   transition: all 200ms ease-in-out;
-
+  transform: translate(-50%, -50%) scale(0);
   color: var(--primary-light);
 }
 

@@ -240,13 +240,7 @@ export const displayController = (() => {
       });
     });
 
-    const addListCancelBtn = document.querySelector(".list-cancel-btn");
-    addListCancelBtn.addEventListener("click", () => {
-      const addListForm = document.getElementById("addListForm");
-      const addListModal = document.getElementById("addListModal");
-      addListForm.reset();
-      addListModal.classList.toggle("active");
-    });
+    
   };
 
   return {

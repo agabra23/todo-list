@@ -5,22 +5,8 @@ import { displayController } from "./displayController.js";
 const todoList = new List("Todo");
 const todoList2 = new List("Groceries");
 const todoList3 = new List("Shopping");
-const todoList4 = new List("Unsure");
 const allTasksList = new List("All Tasks", true);
-let listArr = [
-  allTasksList,
-  todoList,
-  todoList2,
-  todoList3,
-  todoList4,
-  todoList4,
-  todoList4,
-  todoList4,
-  todoList4,
-  todoList4,
-  todoList4,
-  todoList4,
-];
+let listArr = [allTasksList, todoList, todoList2, todoList3];
 
 displayController.render(listArr, allTasksList);
 
@@ -129,13 +115,20 @@ addSubmitBtn.onclick = (e) => {
   }
 };
 
-const modalSubmitBtn = document.querySelector(".list-add-btn");
+const addListCancelBtn = document.querySelector(".list-cancel-btn");
+addListCancelBtn.addEventListener("click", () => {
+  const addListForm = document.getElementById("addListForm");
+  const addListModal = document.getElementById("addListModal");
+  addListForm.reset();
+  addListModal.classList.toggle("active");
+});
+
+const modalSubmitBtn = document.getElementById("listAddBtn");
 modalSubmitBtn.onclick = (e) => {
   e.preventDefault();
-
   const addListModal = document.getElementById("addListModal");
-  const addListInput = document.getElementById("addListInput");
   const addListForm = document.getElementById("addListForm");
+  const addListInput = document.getElementById("addListInput");
 
   let tempTitle = addListInput.value;
   console.log(addListInput);
