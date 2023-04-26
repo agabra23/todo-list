@@ -57,27 +57,28 @@
   background-color: var(--red-500);
 }
 
-.mobile-nav {
+#mobileNav {
   position: fixed;
   top: 0;
   right: 100%;
   width: 100%;
-  min-height: 100vh;
+  height: 100svh;
   background: linear-gradient(60deg, var(--red-100), var(--red-200));
-  z-index: 98;
-  transition: 0.4s;
+  z-index: 90;
+  transition: all 200ms ease-in-out;
 
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 3rem 0;
 }
 
 @media (min-width: 600px) {
-  .mobile-nav {
+  #mobileNav {
     display: none;
   }
 }
 
-.mobile-nav.open {
+#mobileNav.open {
   right: 0;
 }
