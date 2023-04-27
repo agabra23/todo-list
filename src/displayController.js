@@ -1,6 +1,7 @@
 export const displayController = (() => {
   const render = (listArr, todoList) => {
-    console.log("working");
+    const currentDate = new Date();
+    console.log(currentDate);
     const taskWrapper = document.getElementById("content");
     taskWrapper.innerHTML = "";
     const listContainers = document.querySelectorAll(".list-container");
@@ -29,7 +30,6 @@ export const displayController = (() => {
       deleteBtn.textContent = "";
       deleteBtn.dataset.index = i;
       deleteBtn.setAttribute.id = `deleteBtn${deleteBtn.dataset.index}`;
-      console.log(deleteBtn.dataset.index);
 
       const deleteLabel = document.createElement("label");
       deleteLabel.setAttribute("for", deleteBtn.id);
@@ -42,22 +42,59 @@ export const displayController = (() => {
       informationDiv.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="width: 25px" viewBox="0 0 24 24"><title>information-outline</title><path d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" /></svg>`;
       informationDiv.classList.add("information-div");
 
-      const floatingBox = document.createElement("div");
-      floatingBox.classList.add("floating-box");
-      floatingBox.textContent = task.description;
-      informationDiv.appendChild(floatingBox);
+      if (task.description !== "") {
+        const floatingBox = document.createElement("div");
+        floatingBox.classList.add("floating-box");
+        floatingBox.textContent = task.description;
+        informationDiv.appendChild(floatingBox);
+      }
 
       taskContainer.appendChild(checkboxInput);
       taskContainer.appendChild(contents);
+      btnsDiv.appendChild(informationDiv);
       btnsDiv.appendChild(deleteBtn);
       btnsDiv.appendChild(deleteLabel);
-      btnsDiv.appendChild(informationDiv);
       taskContainer.appendChild(btnsDiv);
       taskWrapper.appendChild(taskContainer);
 
+      let isDue = false;
+      let hasDueDate = false;
+      console.log(`display render: ${task.dueDate}`);
+      if (task.dueDate !== "") {
+        hasDueDate = true;
+        console.log("i am reaching the if statement");
+        const dateString = task.dueDate;
+        const [year, month, day] = dateString.split("-").map(Number);
+        const dueDate = new Date(year, month - 1, day);
+
+        if (!(currentDate < dueDate)) isDue = true;
+        console.log(`isdue: ${isDue}`);
+        const dateDiv = document.createElement("div");
+        dateDiv.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="width: 25px" viewBox="0 0 24 24"><title>calendar-alert</title><path d="M6 1V3H5C3.89 3 3 3.89 3 5V19C3 20.11 3.9 21 5 21H19C20.11 21 21 20.11 21 19V5C21 3.9 20.11 3 19 3H18V1H16V3H8V1H6M5 8H19V19H5V8M11 9V14H13V9H11M11 16V18H13V16H11Z" /></svg>`;
+        dateDiv.classList.add("date-div");
+
+        const floatingDueDate = document.createElement("div");
+        floatingDueDate.classList.add("floating-due-date");
+        floatingDueDate.textContent = `${month}/${day}/${year}`;
+        dateDiv.appendChild(floatingDueDate);
+
+        contents.appendChild(dateDiv);
+
+        dateDiv.addEventListener("click", (e) => {
+          e.stopPropagation();
+          console.log("clicked");
+          floatingDueDate.classList.toggle("active");
+        });
+
+        if (isDue) {
+          floatingDueDate.classList.add("is-due");
+          dateDiv.classList.add("is-due");
+        }
+      }
+
       informationDiv.addEventListener("click", (e) => {
         e.stopPropagation();
-        floatingBox.classList.toggle("active");
+        if (task.description !== "") floatingBox.classList.toggle("active");
       });
 
       const editableTitle = document.getElementById(`title${i}`);
@@ -216,6 +253,7 @@ export const displayController = (() => {
         listArr[0].active = true;
         const headerTitle = document.getElementById("listTitle");
         headerTitle.textContent = "All Tasks";
+        localStorage.setItem("todoListData", JSON.stringify(listArr));
         displayController.render.bind(this)(listArr, listArr[0]);
         e.stopPropagation();
       });

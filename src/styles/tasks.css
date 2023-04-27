@@ -106,10 +106,19 @@ input[type="checkbox"]:checked + div > span {
   color: var(--red-500);
 }
 
-.information-div {
+.information-div,
+.date-div {
   color: var(--red-500);
   position: relative;
   transition: all 200ms ease-in-out;
+}
+
+.date-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1rem;
+  position: relative;
 }
 
 .floating-box {
@@ -132,12 +141,42 @@ input[type="checkbox"]:checked + div > span {
   opacity: 0;
 }
 
+.floating-due-date {
+  position: absolute;
+  top: -1rem; /* adjust the top value to position the box */
+  left: 0;
+  min-width: 10vw;
+  white-space: nowrap;
+  background-color: var(--primary-light);
+  border: 2psx solid var(--red-500);
+  color: var(--primary-dark);
+  font-size: 1.5rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+  transition: all 200ms ease-in-out;
+  transform: translateX(3rem);
+  z-index: 100;
+  opacity: 0;
+}
+
+.floating-due-date.active {
+  opacity: 1;
+}
+
+.floating-due-date.is-due,
+.date-div.is-due {
+  color: var(--red-500);
+}
+
 @media (max-width: 600px) {
   .floating-box {
     max-width: 20rem;
   }
 
-  .floating-box.active {
+  .floating-box.active,
+  .floating-due-date.active {
     opacity: 1;
   }
 }
@@ -148,12 +187,17 @@ input[type="checkbox"]:checked + div > span {
     transform: scale(1.1);
   }
 
-  .information-div:hover {
+  .information-div:hover,
+  .date-div:hover {
     transform: scale(1.1);
   }
 
   .information-div:hover .floating-box,
   .floating-box.active {
+    opacity: 1;
+  }
+
+  .date-div:hover .floating-due-date {
     opacity: 1;
   }
 }

@@ -2,11 +2,9 @@ import "./styles/style.css";
 import { List, Task } from "./todo.js";
 import { displayController } from "./displayController.js";
 
-const todoList = new List("Todo");
-const todoList2 = new List("Groceries");
-const todoList3 = new List("Shopping");
 const allTasksList = new List("All Tasks", true);
-let listArr = [allTasksList, todoList, todoList2, todoList3];
+
+let listArr = [allTasksList];
 
 displayController.render(listArr, allTasksList);
 
@@ -53,7 +51,7 @@ const getFormTask = () => {
   const dueMonth = document.getElementById("dueDateMonth").value;
   const dueDay = document.getElementById("dueDateDay").value;
   const dueYear = document.getElementById("dueDateYear").value;
-
+  console.log(dueMonth);
   let priorityValue = "";
   priorityBtns.forEach((btn) => {
     if (btn.classList.contains("active")) priorityValue = btn.textContent;
@@ -62,7 +60,7 @@ const getFormTask = () => {
   return new Task(
     taskName,
     taskDescription,
-    `${dueMonth}/${dueDay}/${dueYear}`,
+    `${dueYear}-${dueMonth}-${dueDay}`,
     priorityValue,
     false
   );
@@ -97,7 +95,6 @@ function createTask(list) {
     if (list !== allTasksList) {
       allTasksList.addTask(task);
     }
-    console.log(list.tasks);
   }
   closeAddModal();
   displayController.render(listArr, list);
