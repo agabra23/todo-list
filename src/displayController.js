@@ -38,10 +38,24 @@ export const displayController = (() => {
 
       deleteBtn.style.display = "none";
 
+      const informationDiv = document.createElement("div");
+      informationDiv.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="width: 25px" viewBox="0 0 24 24"><title>information-outline</title><path d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" /></svg>`;
+      informationDiv.classList.add("information-div");
+
+      const floatingBox = document.createElement("div");
+      floatingBox.classList.add("floating-box");
+      floatingBox.textContent = task.description;
+      informationDiv.appendChild(floatingBox);
+
+      informationDiv.onclick = () => {
+        floatingBox.classList.toggle("active");
+      };
+
       taskContainer.appendChild(checkboxInput);
       taskContainer.appendChild(contents);
       btnsDiv.appendChild(deleteBtn);
       btnsDiv.appendChild(deleteLabel);
+      btnsDiv.appendChild(informationDiv);
       taskContainer.appendChild(btnsDiv);
       taskWrapper.appendChild(taskContainer);
 
@@ -239,8 +253,6 @@ export const displayController = (() => {
         addListModal.classList.toggle("active");
       });
     });
-
-    
   };
 
   return {

@@ -106,9 +106,42 @@ input[type="checkbox"]:checked + div > span {
   color: var(--red-500);
 }
 
+.information-div {
+  color: var(--red-500);
+  position: relative;
+  transition: all 200ms ease-in-out;
+}
+
+.floating-box {
+  position: absolute;
+  top: -1.2rem; /* adjust the top value to position the box */
+  right: 0;
+  min-width: 10vw;
+  max-width: 100rem;
+  white-space: nowrap;
+  transform: translateX(-8rem);
+  background-color: var(--red-500);
+  color: var(--primary-light);
+  font-size: 1.5rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+}
+
+.information-div:hover .floating-box,
+.floating-box.active {
+  opacity: 1;
+}
+
 @media (min-width: 601px) {
   .delete-label:hover {
     color: var(--red-400);
+    transform: scale(1.1);
+  }
+
+  .information-div:hover {
     transform: scale(1.1);
   }
 }
