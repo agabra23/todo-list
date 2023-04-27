@@ -119,20 +119,27 @@ input[type="checkbox"]:checked + div > span {
   min-width: 10vw;
   max-width: 100rem;
   white-space: nowrap;
-  transform: translateX(-8rem);
+  overflow-x: scroll;
   background-color: var(--red-500);
   color: var(--primary-light);
   font-size: 1.5rem;
   padding: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+  transition: all 200ms ease-in-out;
+  transform: translateX(-8rem);
   opacity: 0;
-  transition: opacity 200ms ease-in-out;
 }
 
-.information-div:hover .floating-box,
-.floating-box.active {
-  opacity: 1;
+@media (max-width: 600px) {
+  .floating-box {
+    max-width: 20rem;
+  }
+
+  .floating-box.active {
+    opacity: 1;
+  }
 }
 
 @media (min-width: 601px) {
@@ -143,6 +150,11 @@ input[type="checkbox"]:checked + div > span {
 
   .information-div:hover {
     transform: scale(1.1);
+  }
+
+  .information-div:hover .floating-box,
+  .floating-box.active {
+    opacity: 1;
   }
 }
 

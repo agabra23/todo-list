@@ -47,10 +47,6 @@ export const displayController = (() => {
       floatingBox.textContent = task.description;
       informationDiv.appendChild(floatingBox);
 
-      informationDiv.onclick = () => {
-        floatingBox.classList.toggle("active");
-      };
-
       taskContainer.appendChild(checkboxInput);
       taskContainer.appendChild(contents);
       btnsDiv.appendChild(deleteBtn);
@@ -58,6 +54,11 @@ export const displayController = (() => {
       btnsDiv.appendChild(informationDiv);
       taskContainer.appendChild(btnsDiv);
       taskWrapper.appendChild(taskContainer);
+
+      informationDiv.addEventListener("click", (e) => {
+        e.stopPropagation();
+        floatingBox.classList.toggle("active");
+      });
 
       const editableTitle = document.getElementById(`title${i}`);
       editableTitle.addEventListener("keydown", (event) => {
