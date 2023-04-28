@@ -253,7 +253,6 @@ export const displayController = (() => {
         listArr[0].active = true;
         const headerTitle = document.getElementById("listTitle");
         headerTitle.textContent = "All Tasks";
-        localStorage.setItem("todoListData", JSON.stringify(listArr));
         displayController.render.bind(this)(listArr, listArr[0]);
         e.stopPropagation();
       });
