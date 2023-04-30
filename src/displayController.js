@@ -1,7 +1,9 @@
+import Storage from "./Storage";
+
 export const displayController = (() => {
   const render = (listArr, todoList) => {
     const currentDate = new Date();
-    console.log(currentDate);
+
     const taskWrapper = document.getElementById("content");
     taskWrapper.innerHTML = "";
     const listContainers = document.querySelectorAll(".list-container");
@@ -59,16 +61,13 @@ export const displayController = (() => {
 
       let isDue = false;
       let hasDueDate = false;
-      console.log(`display render: ${task.dueDate}`);
       if (task.dueDate !== "") {
         hasDueDate = true;
-        console.log("i am reaching the if statement");
         const dateString = task.dueDate;
         const [year, month, day] = dateString.split("-").map(Number);
         const dueDate = new Date(year, month - 1, day);
 
         if (!(currentDate < dueDate)) isDue = true;
-        console.log(`isdue: ${isDue}`);
         const dateDiv = document.createElement("div");
         dateDiv.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="width: 25px" viewBox="0 0 24 24"><title>calendar-alert</title><path d="M6 1V3H5C3.89 3 3 3.89 3 5V19C3 20.11 3.9 21 5 21H19C20.11 21 21 20.11 21 19V5C21 3.9 20.11 3 19 3H18V1H16V3H8V1H6M5 8H19V19H5V8M11 9V14H13V9H11M11 16V18H13V16H11Z" /></svg>`;
         dateDiv.classList.add("date-div");
@@ -82,7 +81,6 @@ export const displayController = (() => {
 
         dateDiv.addEventListener("click", (e) => {
           e.stopPropagation();
-          console.log("clicked");
           floatingDueDate.classList.toggle("active");
         });
 
@@ -100,13 +98,13 @@ export const displayController = (() => {
       const editableTitle = document.getElementById(`title${i}`);
       editableTitle.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
-          console.log("Enter");
           event.preventDefault();
           editableTitle.blur();
         }
       });
       editableTitle.addEventListener("blur", () => {
         task.title = editableTitle.textContent;
+        if (listArr !== undefined) Storage.saveListArr(listArr);
       });
 
       const prioritySpan = document.getElementById(`priority${i}`);
@@ -119,7 +117,6 @@ export const displayController = (() => {
       }
 
       deleteLabel.addEventListener("click", (e) => {
-        console.log("label click");
         deleteBtn.click();
       });
 
@@ -133,9 +130,11 @@ export const displayController = (() => {
       });
 
       deleteBtn.addEventListener("click", (e) => {
-        task.parentList.deleteTask(task);
+        // task.parentList.deleteTask(task);
+        todoList.deleteTask(task);
         listArr[0].deleteTask(task);
         e.stopPropagation();
+        Storage.saveListArr(listArr);
         displayController.render.bind(this)(listArr, todoList);
       });
     });
@@ -149,7 +148,7 @@ export const displayController = (() => {
       listWrapper.classList.add("list-item");
       listWrapper.classList.add("all-tasks-list");
       listWrapper.dataset.index = 0;
-      if (listArr[0].active) listWrapper.classList.add("active");
+      if (listArr[0].active === true) listWrapper.classList.add("active");
       listTitle.classList.add("list-item-title");
       listTitle.setAttribute.id = `listItemTitle0`;
 
@@ -184,7 +183,7 @@ export const displayController = (() => {
         pencilDiv.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="width: 25px" viewBox="0 0 24 24"><title>pencil-outline</title><path d="M14.06,9L15,9.94L5.92,19H5V18.08L14.06,9M17.66,3C17.41,3 17.15,3.1 16.96,3.29L15.13,5.12L18.88,8.87L20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18.17,3.09 17.92,3 17.66,3M14.06,6.19L3,17.25V21H6.75L17.81,9.94L14.06,6.19Z" /></svg>`;
         trashDiv.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" style="width: 25px" viewBox="0 0 24 24"><title>trash-can-outline</title><path fill="currentColor" d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" /></svg>`;
         listWrapper.classList.add("list-item");
-        if (list.active) listWrapper.classList.add("active");
+        if (list.active === true) listWrapper.classList.add("active");
         listTitle.classList.add("list-item-title");
         listTitle.setAttribute.id = `listItemTitle${i + 1}`;
         pencilDiv.classList.add("nav-pencil-div");
@@ -202,7 +201,6 @@ export const displayController = (() => {
       pencils.forEach((pencil) => {
         pencil.addEventListener("click", (e) => {
           e.stopPropagation();
-          console.log(`Edit this list`);
 
           const currentTitle = pencil.previousElementSibling;
           currentTitle.setAttribute("contenteditable", true);
@@ -224,6 +222,7 @@ export const displayController = (() => {
 
               listArr[currentTitle.parentElement.dataset.index].title =
                 currentTitle.textContent;
+              if (listArr !== undefined) Storage.saveListArr(listArr);
             }
           });
 
@@ -253,7 +252,10 @@ export const displayController = (() => {
         listArr[0].active = true;
         const headerTitle = document.getElementById("listTitle");
         headerTitle.textContent = "All Tasks";
+        Storage.saveListArr(listArr);
+
         displayController.render.bind(this)(listArr, listArr[0]);
+
         e.stopPropagation();
       });
     });
@@ -263,18 +265,19 @@ export const displayController = (() => {
       listItem.addEventListener("click", () => {
         listItems.forEach((item) => {
           item.classList.remove("active");
-
           listArr[item.dataset.index].active = false;
         });
+        listArr[0].active = false;
 
         listItem.classList.add("active");
         listArr[listItem.dataset.index].active = true;
+
+        Storage.saveListArr(listArr);
 
         displayController.render.bind(this)(
           listArr,
           listArr[listItem.dataset.index]
         );
-
         const headerTitle = document.getElementById("listTitle");
         const listItemContainer = document.querySelector(".list-item.active");
         const listItemTitle = listItemContainer.children[0];
@@ -291,6 +294,8 @@ export const displayController = (() => {
         addListModal.classList.toggle("active");
       });
     });
+
+    Storage.saveListArr(listArr);
   };
 
   return {

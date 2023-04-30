@@ -1,14 +1,26 @@
 import "./styles/style.css";
 import { List, Task } from "./todo.js";
 import { displayController } from "./displayController.js";
+import Storage from "./Storage";
 
-const allTasksList = new List("All Tasks", true);
+const allTasksList = new List("All Tasks", false);
+const data = localStorage.getItem("listArr");
+let listArr = data !== null && data !== undefined ? Storage.getListArr() : [];
 
-let listArr = [allTasksList];
+if (listArr.length === 0) {
+  listArr.push(allTasksList);
+}
 
-displayController.render(listArr, allTasksList);
+function getLastActive() {
+  let lastActive = listArr[0];
+  listArr.forEach((list) => {
+    if (list.active === true) lastActive = list;
+  });
+  return lastActive;
+}
+displayController.render(listArr, getLastActive());
 
-// Sidebar Nav Logic
+// Sidebar ui Logic
 
 const hamburgerMenu = document.getElementById("hamburgerMenu");
 const mobileNav = document.getElementById("mobileNav");
@@ -18,11 +30,9 @@ hamburgerMenu.onclick = () => {
   mobileNav.classList.toggle("open");
 };
 
-// Add Button Logic
-
 const addBtn = document.getElementById("addBtn");
 const addModal = document.getElementById("addModal");
-const addForm = document.getElementById("addform");
+// const addForm = document.getElementById("addform");
 const closeAddModalBtn = document.getElementById("closeAddModal");
 
 closeAddModalBtn.onclick = () => {
@@ -41,7 +51,7 @@ priorityBtns.forEach((btn) => {
     priorityBtns.forEach((button) => {
       button.classList.remove("active");
     });
-    if (active == false) btn.classList.add("active");
+    if (active === false) btn.classList.add("active");
   };
 });
 
@@ -51,7 +61,6 @@ const getFormTask = () => {
   const dueMonth = document.getElementById("dueDateMonth").value;
   const dueDay = document.getElementById("dueDateDay").value;
   const dueYear = document.getElementById("dueDateYear").value;
-  console.log(dueMonth);
   let priorityValue = "";
   priorityBtns.forEach((btn) => {
     if (btn.classList.contains("active")) priorityValue = btn.textContent;
@@ -68,6 +77,7 @@ const getFormTask = () => {
 
 function addList(list) {
   listArr.push(list);
+  if (listArr !== undefined) Storage.saveListArr(listArr);
 }
 
 function closeAddModal() {
@@ -91,13 +101,14 @@ function createTask(list) {
   let task = getFormTask();
   if (task.title != "") {
     list.addTask(task);
-    task.parentList = list;
-    if (list !== allTasksList) {
-      allTasksList.addTask(task);
+    if (list !== listArr[0]) {
+      listArr[0].addTask(task);
     }
   }
+
   closeAddModal();
   displayController.render(listArr, list);
+  Storage.saveListArr(listArr);
 }
 
 const addSubmitBtn = document.getElementById("addSubmit");
@@ -106,7 +117,7 @@ addSubmitBtn.onclick = (e) => {
   e.preventDefault();
 
   if (selectedListItem === null) {
-    createTask(allTasksList);
+    createTask(listArr[0]);
   } else {
     createTask(listArr[selectedListItem.dataset.index]);
   }
@@ -128,13 +139,13 @@ modalSubmitBtn.onclick = (e) => {
   const addListInput = document.getElementById("addListInput");
 
   let tempTitle = addListInput.value;
-  console.log(addListInput);
-  console.log(`title: ${tempTitle}`);
+
   listArr.forEach((list) => {
     if (list != listArr[0]) {
       list.active = false;
     }
   });
+  Storage.saveListArr(listArr);
   const newList = new List(tempTitle, false);
   addList(newList);
   addListModal.classList.toggle("active");

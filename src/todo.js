@@ -1,17 +1,19 @@
+import Storage from "./Storage";
+
 class Task {
   constructor(
     title = "",
     description = "",
     dueDate = "",
-    priority = "",
-    parentList = undefined
+    priority = ""
+    // parentList = undefined
   ) {
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
     this.priority = priority;
     this.completed = false;
-    this.parentList = parentList;
+    // this.parentList = parentList;
   }
 
   toggleCompleted() {
