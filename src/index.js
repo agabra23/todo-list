@@ -141,15 +141,17 @@ modalSubmitBtn.onclick = (e) => {
 
   let tempTitle = addListInput.value;
 
-  listArr.forEach((list) => {
-    if (list != listArr[0]) {
-      list.active = false;
-    }
-  });
-  Storage.saveListArr(listArr);
-  const newList = new List(tempTitle, false);
-  addList(newList);
-  addListModal.classList.toggle("active");
-  displayController.render(listArr, newList);
-  addListForm.reset();
+  if (tempTitle !== "") {
+    listArr.forEach((list) => {
+      if (list != listArr[0]) {
+        list.active = false;
+      }
+    });
+    Storage.saveListArr(listArr);
+    const newList = new List(tempTitle, false);
+    addList(newList);
+    addListModal.classList.toggle("active");
+    displayController.render(listArr, newList);
+    addListForm.reset();
+  }
 };
