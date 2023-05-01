@@ -7,6 +7,8 @@ export const displayController = (() => {
     const taskWrapper = document.getElementById("content");
     taskWrapper.innerHTML = "";
     const listContainers = document.querySelectorAll(".list-container");
+    const headerTitle = document.getElementById("listTitle");
+    headerTitle.textContent = todoList.title;
 
     todoList.tasks.forEach((task, i) => {
       const taskContainer = document.createElement("div");
