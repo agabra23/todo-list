@@ -81,6 +81,7 @@ const getFormTask = () => {
 
 function addList(list) {
   listArr.push(list);
+  listArr[0].active = false;
   if (listArr !== undefined) Storage.saveListArr(listArr);
 }
 
@@ -151,7 +152,7 @@ modalSubmitBtn.onclick = (e) => {
       }
     });
     Storage.saveListArr(listArr);
-    const newList = new List(tempTitle, false);
+    const newList = new List(tempTitle, true);
     addList(newList);
     addListModal.classList.toggle("active");
     displayController.render(listArr, newList);

@@ -252,12 +252,15 @@ export const displayController = (() => {
         listArr.forEach((list) => {
           list.active = false;
         });
-        listArr[0].active = true;
         const headerTitle = document.getElementById("listTitle");
-        headerTitle.textContent = "All Tasks";
+
+        let nextList = i;
+        if (!listArr[i]) nextList = 0;
+        headerTitle.textContent = listArr[nextList].title;
+        listArr[nextList].active = true;
         Storage.saveListArr(listArr);
 
-        displayController.render.bind(this)(listArr, listArr[0]);
+        displayController.render.bind(this)(listArr, listArr[nextList]);
 
         e.stopPropagation();
       });
