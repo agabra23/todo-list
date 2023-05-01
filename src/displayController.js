@@ -63,7 +63,7 @@ export const displayController = (() => {
 
       let isDue = false;
       let hasDueDate = false;
-      if (task.dueDate !== "") {
+      if (task.dueDate !== "--") {
         hasDueDate = true;
         const dateString = task.dueDate;
         const [year, month, day] = dateString.split("-").map(Number);
