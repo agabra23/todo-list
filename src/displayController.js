@@ -243,8 +243,9 @@ export const displayController = (() => {
       trashCan.addEventListener("click", (e) => {
         let i = trashCan.parentElement.dataset.index;
         listArr[i].tasks.forEach((task) => {
-          listArr[i].deleteTask(task);
-          listArr[0].deleteTask(task);
+          listArr.forEach((list) => {
+            list.deleteTask(task);
+          });
         });
         listArr.splice(i, 1);
         trashCans[0].parentElement.classList.add("active");
