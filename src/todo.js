@@ -1,5 +1,3 @@
-import Storage from "./Storage";
-
 class Task {
   constructor(
     title = "",
@@ -18,7 +16,6 @@ class Task {
 
   toggleCompleted() {
     this.completed = !this.completed;
-    console.log(this.completed);
   }
 }
 
@@ -36,7 +33,6 @@ class List {
   deleteTask(task) {
     let index = this.tasks.indexOf(task);
     if (index != -1) this.tasks.splice(index, 1);
-    console.log(this.tasks);
   }
 }
 

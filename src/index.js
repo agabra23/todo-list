@@ -5,7 +5,8 @@ import Storage from "./Storage";
 
 const allTasksList = new List("All Tasks", false);
 const data = localStorage.getItem("listArr");
-let listArr = data !== null && data !== undefined ? Storage.getListArr() : [];
+
+let listArr = localStorage.getItem("listArr") ? Storage.getListArr() : [];
 
 if (listArr.length === 0) {
   listArr.push(allTasksList);
