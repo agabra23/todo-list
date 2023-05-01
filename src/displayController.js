@@ -26,6 +26,13 @@ export const displayController = (() => {
       customCheckbox.classList.add("custom-checkbox");
       contents.innerHTML = `<label for="${id}"><span class="custom-checkbox"></span></label><span class="priority-marks" id="priority${i}">${task.priority}</span><span class="editable-title"  id="title${i}" contenteditable=true>${task.title}</span>`;
 
+      console.log("Task Completed:");
+      console.log(task.completed);
+
+      if (task.completed) {
+        checkboxInput.checked = true;
+      }
+
       const btnsDiv = document.createElement("div");
       btnsDiv.classList.add("btns-div");
 
@@ -114,20 +121,13 @@ export const displayController = (() => {
         prioritySpan.classList.add("priority-no-margin");
       }
 
-      if (task.completed) {
-        customCheckbox.classList.add("completed");
-      }
-
       deleteLabel.addEventListener("click", (e) => {
         deleteBtn.click();
       });
 
-      customCheckbox.addEventListener("click", () => {
-        checkboxInput.checked = !checkboxInput.checked;
-      });
-
-      checkboxInput.addEventListener("click", (e) => {
+      checkboxInput.addEventListener("change", (e) => {
         task.toggleCompleted();
+        Storage.saveListArr(listArr);
         e.stopPropagation();
       });
 
