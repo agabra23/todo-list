@@ -30,6 +30,11 @@ class List {
     this.tasks.push(newTask);
   }
 
+  containsTask(task) {
+    let index = this.tasks.indexOf(task);
+    return index !== -1;
+  }
+
   deleteTask(task) {
     let index = this.tasks.indexOf(task);
     if (index != -1) this.tasks.splice(index, 1);
