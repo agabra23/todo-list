@@ -43,6 +43,9 @@ closeAddModalBtn.onclick = () => {
 addBtn.onclick = () => {
   addBtn.classList.toggle("open");
   addModal.classList.toggle("open");
+
+  const taskNameInput = document.getElementById("taskName");
+  taskNameInput.focus();
 };
 
 const priorityBtns = document.querySelectorAll(".priority-btn");

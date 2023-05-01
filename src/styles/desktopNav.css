@@ -92,7 +92,7 @@
 
 .list-item-title {
   flex: 1;
-  word-break: break-all;
+  word-break: normal;
 }
 
 .list-item-title:focus {
